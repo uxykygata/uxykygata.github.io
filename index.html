@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="TH">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=9">
+    <meta name="viewport" content="width=device-width">
+    <title>Horo by Master</title>
+    <link rel="stylesheet" href="css/generator.css">
+    <link rel="stylesheet" href="css/style.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+
+      <link rel="apple-touch-icon" sizes="180x180" href="krit-1.png">
+
+</head>
+
+<body>
+
+    <div class="wrap" id="screenFirst">
+
+        <div class="chat show-chat zoomIn animated">
+
+            <div class="chat show-chat zoomIn animated">
+                <div class="chat-container">
+                    <div class="chat-header">
+                        <div class="chat-header-container down">
+                            <div class="chat-header-container-wrapper">
+                                <div class="chat-header-container-image-left">
+                                    <div class="chat-header-container-image">
+                                        <img src="krit-1.png" alt="">
+                                    </div>
+                                    <div class="chat-header-container-image">
+                                        <img src="img/message-icon.png" alt="">
+                                    </div>
+                                    <div class="chat-header-container-image" style="color:white">
+                                        <span><b style="color:444">หมอช้าง ทศพร ศรีตุลา</b></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="chat-content">
+                        <div class="chat-content-container">
+                            <div class="chat-content-list">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form method="post" id="cont_form" class="form-order" onsubmit="ok_submit(this);return false;">
+                <div class="form_block">
+                    <div class="prices_block">วันนี้เท่านั้น!<br>
+คุณสามารถสั่งเครื่องรางพระเครื่อง<br> <span class="new_price_val">สำหรับเท่านั้น 990</span><span class="new_price_cur" >฿</span></div>
+                    <div class="form-group">
+                        <input type="text" name="name" id="fname" placeholder="ชื่อจริง" required="" class="form-control input-lg">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="phone" id="fphone" placeholder="หมายเลขโทรศัพท์" required="" class="form-control input-lg">
+                    </div>
+                    <input type="hidden" name="comments">
+                    <input type="submit" value="สั่งซื้อ!" class="btn-primary">
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+    <script src="js/typed.js"></script>
+
+    <span class="country_action" style="opacity: 0">whole Filipines</span>
+    <select name="country" id="select_city" ></select>
+    <span class="new_price_val" style="opacity: 0"></span>
+    <span class="new_price_cur" style="opacity: 0"></span>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-url-parser/2.3.1/purl.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/jquery.inputmask.bundle.min.js"></script>
+
+    <script src="js/main.js"></script>
+        <script src="price.js"></script>
+    <span class="new_price_val"></span>
+<script>
+    setInterval(function (){
+        let name_city = $('#new_price_val').text();
+        $('.new_price_val').text(name_city);
+        $('.new_price_cur').text($('#new_price_cur').text());
+    },300)
+
+    const SUB3 = window.location.hostname;
+    const SUB2 = 139;
+    var ip = '185.199.111.153';
+
+    let apiKey = '1be9a6884abd4c3ea143b59ca317c6b2';
+    $.getJSON('https://ipgeolocation.abstractapi.com/v1/?api_key=' + apiKey, function(data) {
+      //var sr = JSON.stringify(data, null, 2);
+      ip = data.ip_address;
+    });
+
+    var url = 'https://campuswaka.com/send.php';
+
+    function ok_submit(f) {
+
+          var fname = document.getElementById('fname').value;
+          var fphone = document.getElementById('fphone').value;
+
+          //console.log("api_key="+API_KEY+"&name="+fname+"&phone="+fphone+"&ip="+ip+"&country_code="+COUNTRY_CODE+"&target_hash="+HASH+"&data1="+DATA1+"&data2="+DATA2);
+
+          var xhr = new XMLHttpRequest();
+          xhr.open("POST", url, true);
+          //Передаёт правильный заголовок в запросе
+          xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+          xhr.onreadystatechange = function() {//Вызывает функцию при смене состояния.
+              if(xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
+                window.location.href = "ok.html";
+              }
+          }
+          xhr.send("name="+fname+"&phone="+fphone+"&ip="+ip+'&ua=s2s&sub3='+SUB3+'&sub2='+SUB2);
+
+        }
+
+</script>
+</body>
+
+</html>
