@@ -1,0 +1,10 @@
+div span {
+text-shadow: 
+    white -1px -1px 0, 
+    white 1px -1px 0, 
+    white -1px 1px 0,
+    white 1px 1px 0, 
+    black 4px 3px 5px;
+
+}
+
